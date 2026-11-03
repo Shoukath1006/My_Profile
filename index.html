@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoukath Ali M</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shoukath Ali M is a Java backend developer building Spring Boot services for healthcare, procurement, utilities and travel products.">
+<meta property="og:title" content="Shoukath Ali M, Java Backend Developer">
+<meta property="og:description" content="Spring Boot services behind billing runs, supplier catalogues and care schedules.">
+<meta property="og:image" content="assets/shoukath-ali.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout concept: a profile read like an API. Section labels are endpoints, the
+   stack is a request path, and colour comes from the portrait (shirt periwinkle, wall brick). */
+:root {
+  --bg: #f2f4fb;
+  --surface: #ffffff;
+  --ink: #12183a;
+  --muted: #4f5779;
+  --line: #d3d8ec;
+  --accent: #3346c8;
+  --on-accent: #ffffff;
+  --brick: #b0401f;
+  --tint: #e3e7fa;
+  --code-bg: #12183a;
+  --code-fg: #e6e9ff;
+  --code-muted: #9aa3d0;
+  --code-key: #aab7ff;
+  --code-str: #ffb596;
+  --code-num: #8fe0d0;
+  --code-line: #2c3463;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1128; --surface: #151a38; --ink: #edf0ff; --muted: #a6aed4; --line: #2b3260;
+    --accent: #a9b6ff; --on-accent: #0d1128; --brick: #f4906b; --tint: #1e2550;
+    --code-bg: #080b1e; --code-line: #262c55;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1128; --surface: #151a38; --ink: #edf0ff; --muted: #a6aed4; --line: #2b3260;
+  --accent: #a9b6ff; --on-accent: #0d1128; --brick: #f4906b; --tint: #1e2550;
+  --code-bg: #080b1e; --code-line: #262c55;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; z-index: 10;
+  height: env(safe-area-inset-top, 0px); background: var(--bg);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, p, ul, dl, dd, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--mono); }
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; gap: 12px 28px; padding-block: 12px; flex-wrap: wrap; }
+.brand { font: 800 1.15rem/1 var(--display); text-decoration: none; letter-spacing: -0.01em; }
+.nav { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.nav a {
+  font: 500 0.82rem/1 var(--mono); color: var(--muted); text-decoration: none;
+  padding: 8px 10px; border-radius: 4px; white-space: nowrap;
+}
+.nav a:hover { color: var(--ink); background: var(--tint); }
+.nav a.on { color: var(--accent); background: var(--tint); }
+.theme {
+  font: 500 0.82rem/1 var(--mono); color: var(--ink); background: none; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px;
+}
+.theme:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Hero */
+.hero .wrap {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px 64px; align-items: center; padding-block: 56px 64px;
+}
+.req { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font: 500 0.85rem/1.3 var(--mono); color: var(--muted); }
+.verb { font: 700 0.75rem/1 var(--mono); color: var(--brick); letter-spacing: 0.04em; }
+.ok { color: var(--on-accent); background: var(--accent); padding: 3px 7px; border-radius: 3px; font: 700 0.72rem/1.2 var(--mono); }
+h1 {
+  font: 800 clamp(3.5rem, 10.4vw, 7.75rem)/0.92 var(--display);
+  letter-spacing: -0.035em; margin-top: 22px;
+}
+h1 span { display: block; }
+h1 .last { color: var(--accent); }
+.role { font: 500 clamp(1rem, 1.6vw, 1.15rem)/1.4 var(--mono); margin-top: 24px; }
+.thesis { font: 500 clamp(1.3rem, 2.4vw, 1.7rem)/1.32 var(--display); max-width: 30ch; margin-top: 18px; text-wrap: balance; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-block; font: 600 0.98rem/1 var(--body); text-decoration: none;
+  padding: 14px 20px; border-radius: 5px; border: 1px solid var(--accent);
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.solid { background: var(--accent); color: var(--on-accent); }
+.btn.line { color: var(--accent); background: transparent; }
+.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; border-radius: 6px; }
+.portrait figcaption { font: 400 0.8rem/1.4 var(--mono); color: var(--muted); margin-top: 10px; }
+.stats {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 32px; border-top: 1px solid var(--line); padding-top: 24px;
+}
+.stats dt { font: 800 clamp(1.9rem, 3.6vw, 2.75rem)/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stats dd { color: var(--muted); font-size: 0.95rem; line-height: 1.35; margin-top: 6px; }
+
+/* Sections */
+section[id] { scroll-margin-top: 76px; }
+.band { padding-block: 80px; border-top: 1px solid var(--line); }
+.band.alt { background: var(--surface); }
+.eyebrow { display: flex; gap: 10px; align-items: baseline; font: 500 0.88rem/1.3 var(--mono); color: var(--muted); }
+h2 {
+  font: 700 clamp(2rem, 4.4vw, 3.25rem)/1.05 var(--display); letter-spacing: -0.025em;
+  margin-top: 12px; max-width: 22ch; text-wrap: balance;
+}
+.lede { max-width: 62ch; margin-top: 16px; color: var(--muted); }
+
+/* About and console */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px 64px; margin-top: 40px; align-items: start; }
+.prose { display: grid; gap: 16px; max-width: 62ch; }
+.console { background: var(--code-bg); color: var(--code-fg); border-radius: 8px; min-width: 0; overflow: hidden; }
+.console-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--code-line); font: 400 0.78rem/1.3 var(--mono); color: var(--code-muted); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px 0; }
+.tab {
+  font: 500 0.82rem/1 var(--mono); color: var(--code-muted); background: none; cursor: pointer;
+  border: 1px solid var(--code-line); border-radius: 4px; padding: 8px 10px;
+}
+.tab:hover { color: var(--code-fg); }
+.tab[aria-selected="true"] { color: var(--code-bg); background: var(--code-key); border-color: var(--code-key); }
+.tab:focus-visible, .copy-json:focus-visible { outline-color: var(--code-key); }
+.status { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px 0; font: 500 0.8rem/1.3 var(--mono); color: var(--code-num); }
+.copy-json { font: 500 0.75rem/1 var(--mono); color: var(--code-muted); background: none; border: 1px solid var(--code-line); border-radius: 4px; padding: 6px 8px; cursor: pointer; }
+.copy-json:hover { color: var(--code-fg); }
+.console pre { margin: 0; padding: 12px 16px 18px; overflow: auto; height: 360px; font: 400 0.84rem/1.6 var(--mono); }
+.k { color: var(--code-key); } .s { color: var(--code-str); } .n { color: var(--code-num); }
+
+/* Experience */
+.job { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px 64px; margin-top: 40px; align-items: start; }
+.job h3 { font: 700 1.6rem/1.15 var(--display); }
+.job-meta { font: 400 0.88rem/1.4 var(--mono); color: var(--muted); margin-top: 8px; }
+.ticks { display: grid; gap: 12px; margin-top: 22px; }
+.ticks li { padding-left: 22px; position: relative; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 2px; background: var(--brick); }
+.ticks strong { font-weight: 600; }
+.chart { min-width: 0; }
+.chart h3 { font: 700 1.15rem/1.25 var(--display); }
+.chart > p { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+.bars { display: grid; gap: 12px; margin-top: 20px; }
+.bar-row { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; align-items: center; font: 400 0.82rem/1.2 var(--mono); }
+.bar-track { display: flex; align-items: center; gap: 8px; }
+.bar { height: 12px; background: var(--accent); border-radius: 0 4px 4px 0; flex: 0 0 auto; }
+.bar-val { font-weight: 500; font-variant-numeric: tabular-nums; }
+.source { font: 400 0.76rem/1.5 var(--mono); color: var(--muted); margin-top: 18px; }
+
+/* Projects */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.chip {
+  font: 500 0.84rem/1 var(--mono); color: var(--ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip span { opacity: .7; margin-left: 4px; }
+.count { font: 400 0.8rem/1.4 var(--mono); color: var(--muted); margin-top: 14px; }
+.projects { margin-top: 18px; border-top: 1px solid var(--line); }
+.project {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 16px 48px;
+  padding-block: 32px; border-bottom: 1px solid var(--line);
+}
+.domain { font: 500 0.78rem/1.3 var(--mono); color: var(--brick); }
+.project h3 { font: 700 clamp(1.45rem, 2.4vw, 1.85rem)/1.12 var(--display); letter-spacing: -0.015em; margin-top: 8px; }
+.project .what { color: var(--muted); margin-top: 8px; font-size: 0.98rem; line-height: 1.45; }
+.project-body { min-width: 0; }
+.project-body .ticks { margin-top: 0; gap: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.tags li { font: 400 0.76rem/1 var(--mono); background: var(--tint); padding: 6px 8px; border-radius: 3px; }
+
+/* Stack as a request path */
+.path { position: relative; margin-top: 40px; display: grid; }
+.path::before { content: ""; position: absolute; left: 5px; top: 30px; bottom: 30px; width: 2px; background: var(--line); }
+.packet {
+  position: absolute; left: 0; top: 30px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--brick); animation: travel 7s ease-in-out infinite alternate;
+}
+@keyframes travel { to { top: calc(100% - 42px); } }
+.layer {
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) 96px; gap: 8px 32px;
+  padding: 20px 0 20px 32px; align-items: baseline; border-bottom: 1px solid var(--line);
+}
+.layer:last-child { border-bottom: 0; }
+.layer h3 { font: 700 1.2rem/1.2 var(--display); }
+.layer p { color: var(--muted); font-size: 0.92rem; line-height: 1.4; margin-top: 2px; }
+.items { min-width: 0; }
+.level { font: 500 0.74rem/1 var(--mono); padding: 5px 7px; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); white-space: nowrap; justify-self: end; }
+.level.daily { color: var(--accent); border-color: var(--accent); }
+
+/* Working style */
+.ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 64px; margin-top: 40px; }
+.ways h3 { font: 700 1.3rem/1.2 var(--display); }
+.ways p { color: var(--muted); margin-top: 8px; }
+
+/* Contact */
+.contact { background: var(--accent); color: var(--on-accent); padding-block: 80px; }
+.contact .eyebrow { color: inherit; opacity: .85; }
+.contact .verb { color: inherit; }
+.contact h2 { max-width: 18ch; }
+.contact .lede { color: inherit; opacity: .9; }
+.channels { display: grid; margin-top: 36px; border-top: 1px solid color-mix(in srgb, var(--on-accent) 35%, transparent); }
+.channel {
+  display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 8px 20px; align-items: center;
+  padding-block: 16px; border-bottom: 1px solid color-mix(in srgb, var(--on-accent) 35%, transparent);
+}
+.channel-label { font: 500 0.82rem/1.3 var(--mono); opacity: .85; }
+.channel-value { font: 500 clamp(1.05rem, 2.4vw, 1.5rem)/1.25 var(--display); overflow-wrap: anywhere; min-width: 0; text-decoration: none; }
+a.channel-value:hover { text-decoration: underline; }
+.copy, .open {
+  font: 500 0.8rem/1 var(--mono); color: inherit; background: none; cursor: pointer; text-decoration: none;
+  border: 1px solid currentColor; border-radius: 4px; padding: 9px 11px; white-space: nowrap; min-width: 74px; text-align: center;
+}
+.copy:hover, .open:hover { background: var(--on-accent); color: var(--accent); }
+.contact :focus-visible { outline-color: var(--on-accent); }
+footer { font: 400 0.8rem/1.5 var(--mono); color: var(--muted); padding-block: 24px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 40px 48px; gap: 36px; }
+  .portrait { max-width: 420px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about, .job, .project, .ways { grid-template-columns: minmax(0, 1fr); }
+  .band, .contact { padding-block: 56px; }
+  .nav { order: 3; flex: 1 0 100%; margin-inline: -5px; gap: 0; justify-content: space-between; }
+  .nav a { font-size: 0.74rem; padding: 8px 5px; }
+  .theme { margin-left: auto; }
+  section[id] { scroll-margin-top: 112px; }
+  .console pre { height: 320px; }
+  .layer { grid-template-columns: minmax(0, 1fr) auto; }
+  .layer > div:first-child { grid-column: 1; }
+  .layer .level { grid-column: 2; grid-row: 1; }
+  .layer .items { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .channel { grid-template-columns: minmax(0, 1fr) auto; }
+  .channel-label { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .packet { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Shoukath Ali M</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">/about</a>
+      <a href="#experience">/experience</a>
+      <a href="#projects">/projects</a>
+      <a href="#stack">/stack</a>
+      <a href="#contact">/contact</a>
+    </nav>
+    <button class="theme" id="theme-toggle" type="button">Dark</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="req"><span class="verb">GET</span> /engineers/shoukath-ali <span class="ok">200 OK</span></p>
+        <h1><span>Shoukath</span><span class="last">Ali M</span></h1>
+        <p class="role">Java Backend Developer · Spring Boot · Microservices</p>
+        <p class="thesis">I build the services behind billing runs, supplier catalogues and care schedules.</p>
+        <div class="cta">
+          <a class="btn solid" href="#projects">See my projects</a>
+          <a class="btn line" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="assets/shoukath-ali.jpg" alt="Portrait of Shoukath Ali M in a pale blue shirt, standing in front of a red brick wall" width="834" height="1250">
+        <figcaption>Software Engineer at InnoProSol since July 2023</figcaption>
+      </figure>
+      <dl class="stats">
+        <div><dt>3+</dt><dd>years building production backends</dd></div>
+        <div><dt>9</dt><dd>products worked on</dd></div>
+        <div><dt>2,057</dt><dd>commits across those codebases</dd></div>
+        <div><dt>6</dt><dd>industries, from healthcare to travel</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="band alt" id="about">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">GET</span> /about</p>
+      <h2>Backend first, and comfortable across the whole product.</h2>
+      <div class="about">
+        <div class="prose">
+          <p>I'm a software engineer with over three years of experience in Java backend development. Most of my days go into Spring Boot services: designing REST APIs, shaping the database underneath them and keeping them fast once real data arrives.</p>
+          <p>The systems I work on tend to have rules that must come out right. A water bill, an insurance split on a care invoice and a refund on a tour booking all need to be correct every time, so I care about clean service layers and consistent data.</p>
+          <p>When a feature needs it, I follow it past the API into the React screen or the Android and iOS app. That gives me a practical sense of what makes an API pleasant to use.</p>
+        </div>
+        <div class="console" aria-label="Interactive API console">
+          <div class="console-head"><span>profile-api</span><span>sample responses, no server</span></div>
+          <div class="tabs" role="tablist" aria-label="Endpoints" id="console-tabs"></div>
+          <div class="status"><span id="console-status">200 OK</span><button class="copy-json" id="copy-json" type="button">Copy JSON</button></div>
+          <pre id="console-out" tabindex="0" aria-live="polite"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="experience">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">GET</span> /experience</p>
+      <h2>Over three years shipping enterprise systems at InnoProSol.</h2>
+      <div class="job">
+        <div>
+          <h3>Software Engineer</h3>
+          <p class="job-meta">InnoProSol Pvt Ltd · Jul 2023 to Present</p>
+          <ul class="ticks">
+            <li>Design and develop <strong>scalable backend systems</strong> with Java and Spring Boot.</li>
+            <li>Build and maintain <strong>REST APIs</strong> for enterprise applications.</li>
+            <li>Improve performance by <strong>optimizing SQL queries</strong> and API response times.</li>
+            <li>Implement modular service layers that follow <strong>clean architecture</strong> principles.</li>
+            <li>Work with frontend and QA teams to deliver <strong>production-ready features</strong>.</li>
+            <li>Handle deployments and keep systems <strong>stable in production</strong>.</li>
+          </ul>
+        </div>
+        <div class="chart">
+          <h3>Java is where most of my work lands</h3>
+          <p>Files changed in my commits, by source language.</p>
+          <ul class="bars" id="bars"></ul>
+          <p class="source">Source: git log across my project repositories, Aug 2023 to Oct 2026. Java includes services and Android. Config and asset files are left out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="projects">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">GET</span> /projects?industry=<span id="filter-name">all</span></p>
+      <h2>Nine products, each with its own hard problem.</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects by industry"></div>
+      <p class="count" id="project-count" aria-live="polite"></p>
+      <div class="projects" id="project-list">
+
+        <article class="project" data-domain="Healthcare">
+          <div>
+            <p class="domain">Healthcare</p>
+            <h3>Care Age</h3>
+            <p class="what">Care management for agencies, carers and the people they support.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Developed backend APIs for healthcare workflows, user activity, scheduling, monitoring and care task tracking.</li>
+              <li>Corrected billing so invoices follow each insurance breakdown, with accurate tax amounts and totals.</li>
+              <li>Built alerts and push notifications, a medication audit report, care plan PDFs, and bill and invoice exports.</li>
+              <li>Added GPS tracking with last known location and nearest carer ETA, plus account deletion for the right to erasure.</li>
+            </ul>
+            <ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Scheduler service</li><li>Mobile app</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Travel">
+          <div>
+            <p class="domain">Travel</p>
+            <h3>SST CRM</h3>
+            <p class="what">A tour and travel CRM, from itinerary to booking to refund.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built the backend for itinerary planning and booking workflows, with pricing logic and dynamic package management.</li>
+              <li>Implemented refunds and credit notes, and synced bookings, receipts and credit notes to an external CRM.</li>
+              <li>Added universal search, in-app notifications and record-level audit logs.</li>
+              <li>Designed database-driven modules for efficient data handling and reporting.</li>
+            </ul>
+            <ul class="tags"><li>Java 21</li><li>Spring Boot 3</li><li>MySQL</li><li>React</li><li>Kubernetes on AWS</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Utilities">
+          <div>
+            <p class="domain">Utilities</p>
+            <h3>E-Meter</h3>
+            <p class="what">Electricity reading and billing across properties and occupants.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built Excel import for electricity readings and optimized it for large files.</li>
+              <li>Implemented scheduled bill generation, billing emails and property-sorted Excel and SAP reports.</li>
+              <li>Added multi-factor authentication and encryption for user and employee data.</li>
+              <li>Worked across the auth server, common service, web frontend and Android app.</li>
+            </ul>
+            <ul class="tags"><li>Java 21</li><li>Spring Boot 3</li><li>Spring Security</li><li>MS SQL</li><li>Android</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Healthcare">
+          <div>
+            <p class="domain">Healthcare</p>
+            <h3>Manodayam</h3>
+            <p class="what">Mental health screening and care for institutions and clinicians.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built APIs and screens for custom screening questionnaires, with paginated search.</li>
+              <li>Surfaced PHQ-9 and GAD-7 results in the doctor's view.</li>
+              <li>Added institution management and linked clinical screening records to each institution.</li>
+            </ul>
+            <ul class="tags"><li>Java 21</li><li>Spring Boot 3</li><li>MySQL</li><li>Android</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Procurement">
+          <div>
+            <p class="domain">Procurement</p>
+            <h3>Kitchen Tandem</h3>
+            <p class="what">A procurement platform connecting kitchens with suppliers.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Developed backend services for supplier and product management, with a scalable design for large product datasets.</li>
+              <li>Designed APIs for product search, order processing and analytics, and optimized queries for faster retrieval.</li>
+              <li>Built supplier article pricing, translation and tag services, along with data migration and Excel export.</li>
+              <li>Delivered shopping list, search and deep link features in the Android and iOS apps.</li>
+            </ul>
+            <ul class="tags"><li>Spring Boot</li><li>MySQL</li><li>Microservices</li><li>Android</li><li>iOS (Swift)</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Utilities">
+          <div>
+            <p class="domain">Utilities</p>
+            <h3>SmartJal</h3>
+            <p class="what">Water billing, from meter reading to printed bill.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built modules for billing, user management and report generation.</li>
+              <li>Designed secure APIs for meter readings and billing transactions.</li>
+              <li>Improved performance by optimizing data processing logic, and kept billing calculations accurate and consistent.</li>
+              <li>Worked on the Android app, thermal printing and translated bill formats.</li>
+            </ul>
+            <ul class="tags"><li>Billing logic</li><li>REST APIs</li><li>PHP</li><li>Android</li><li>Thermal printing</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Procurement">
+          <div>
+            <p class="domain">Procurement</p>
+            <h3>PirelliPO</h3>
+            <p class="what">Procurement management with invoices, discounts and budgets.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Developed backend services for invoice processing and discount calculation.</li>
+              <li>Designed APIs for procurement workflows and supplier interactions.</li>
+              <li>Automated calculation and validation processes to improve efficiency.</li>
+              <li>Built budget configuration and invoice screens on the web, and language support in the Android app.</li>
+            </ul>
+            <ul class="tags"><li>Spring Boot</li><li>REST APIs</li><li>MySQL</li><li>Android</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Analytics">
+          <div>
+            <p class="domain">Analytics</p>
+            <h3>SRL Dashboard</h3>
+            <p class="what">A real-time analytics system for performance insights.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built the backend with Spring Boot and Redis caching.</li>
+              <li>Delivered real-time performance insights through optimized API responses.</li>
+              <li>Reduced latency using caching strategies and efficient data handling.</li>
+            </ul>
+            <ul class="tags"><li>Spring Boot</li><li>Redis</li><li>REST APIs</li></ul>
+          </div>
+        </article>
+
+        <article class="project" data-domain="Field service">
+          <div>
+            <p class="domain">Field service</p>
+            <h3>Work Request App</h3>
+            <p class="what">An iOS app for technicians handling maintenance work.</p>
+          </div>
+          <div class="project-body">
+            <ul class="ticks">
+              <li>Built the iOS app's screens, from login and dashboard to task updates and checklists.</li>
+              <li>Integrated APIs for assigning work requests, updating tasks and listing spare parts.</li>
+              <li>Added barcode scanning and language translation.</li>
+            </ul>
+            <ul class="tags"><li>iOS</li><li>Swift</li><li>API integration</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="stack">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">GET</span> /stack</p>
+      <h2>Follow a request through what I work with.</h2>
+      <p class="lede">Each layer is marked with how often I use it, so you know what to expect from me.</p>
+      <div class="path">
+        <span class="packet" aria-hidden="true"></span>
+        <div class="layer">
+          <div><h3>Clients</h3><p>Where the request starts</p></div>
+          <div class="items">React, JavaScript, Android (Java), iOS (Swift), PHP</div>
+          <span class="level">When needed</span>
+        </div>
+        <div class="layer">
+          <div><h3>Security</h3><p>Who is asking</p></div>
+          <div class="items">Spring Security, JWT, multi-factor authentication, data encryption</div>
+          <span class="level">Regular</span>
+        </div>
+        <div class="layer">
+          <div><h3>API</h3><p>What they can ask for</p></div>
+          <div class="items">REST APIs, Spring MVC, Spring Boot, MVC design pattern, Postman</div>
+          <span class="level daily">Daily</span>
+        </div>
+        <div class="layer">
+          <div><h3>Services</h3><p>Where the rules live</p></div>
+          <div class="items">Java, Hibernate, modular service layers, scheduled jobs, Excel and PDF generation, microservices</div>
+          <span class="level daily">Daily</span>
+        </div>
+        <div class="layer">
+          <div><h3>Data</h3><p>What must stay correct</p></div>
+          <div class="items">SQL, MySQL, PostgreSQL, MS SQL, query optimization, versioned database scripts</div>
+          <span class="level daily">Daily</span>
+        </div>
+        <div class="layer">
+          <div><h3>Cache</h3><p>What should not be asked twice</p></div>
+          <div class="items">Redis</div>
+          <span class="level">Basic</span>
+        </div>
+        <div class="layer">
+          <div><h3>Delivery</h3><p>How it reaches production</p></div>
+          <div class="items">Git daily, plus Docker and Kubernetes deployments</div>
+          <span class="level">Basic</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="principles">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">GET</span> /principles</p>
+      <h2>How I approach the work.</h2>
+      <div class="ways">
+        <div><h3>Get the numbers right</h3><p>Billing, tax, discounts and refunds are where small mistakes cost real money, so calculation logic gets validation and careful handling of edge cases.</p></div>
+        <div><h3>Fix the query first</h3><p>Slow endpoints usually start in the data layer. I look at the SQL and the data handling before reaching for a cache.</p></div>
+        <div><h3>Keep modules small and clear</h3><p>Clean, modular service layers make code easier to review, test and change, especially for whoever maintains it next.</p></div>
+        <div><h3>Stay with it in production</h3><p>A feature is finished when it runs reliably. I handle deployments and database changes and work closely with QA and frontend teams.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow"><span class="verb">POST</span> /contact</p>
+      <h2>Have a backend that needs building?</h2>
+      <p class="lede">Email is the best way to reach me. I'm happy to talk through a role, a project or a system you're trying to scale.</p>
+      <div class="channels">
+        <div class="channel">
+          <span class="channel-label">Email</span>
+          <a class="channel-value" href="mailto:shoukatha746@gmail.com">shoukatha746@gmail.com</a>
+          <button class="copy" type="button" data-copy="shoukatha746@gmail.com">Copy</button>
+        </div>
+        <div class="channel">
+          <span class="channel-label">Phone</span>
+          <a class="channel-value" href="tel:+919108679008">+91 91086 79008</a>
+          <button class="copy" type="button" data-copy="+919108679008">Copy</button>
+        </div>
+        <div class="channel">
+          <span class="channel-label">LinkedIn</span>
+          <a class="channel-value" href="https://www.linkedin.com/in/shoukath-ali-671309213/" target="_blank" rel="noopener">shoukath-ali-671309213</a>
+          <a class="open" href="https://www.linkedin.com/in/shoukath-ali-671309213/" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">Open</a>
+        </div>
+        <div class="channel">
+          <span class="channel-label">GitHub</span>
+          <a class="channel-value" href="https://github.com/Shoukath1006" target="_blank" rel="noopener">Shoukath1006</a>
+          <a class="open" href="https://github.com/Shoukath1006" target="_blank" rel="noopener" aria-label="Open GitHub profile">Open</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Shoukath Ali M</span>
+    <span>Java Backend Developer</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* Theme */
+  var toggle = document.getElementById('theme-toggle');
+  function isDark() {
+    var set = root.getAttribute('data-theme');
+    if (set) return set === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function paintToggle() { toggle.textContent = isDark() ? 'Light' : 'Dark'; }
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+  } catch (e) {}
+  paintToggle();
+  toggle.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    paintToggle();
+  });
+
+  /* Copy helpers */
+  function copyText(text, button, doneLabel) {
+    var label = button.textContent;
+    function done(message) {
+      button.textContent = message;
+      setTimeout(function () { button.textContent = label; }, 1600);
+    }
+    if (!navigator.clipboard) { done('Select it'); return; }
+    navigator.clipboard.writeText(text).then(function () { done(doneLabel); }, function () { done('Select it'); });
+  }
+  document.querySelectorAll('.copy').forEach(function (button) {
+    button.addEventListener('click', function () { copyText(button.dataset.copy, button, 'Copied'); });
+  });
+
+  /* Console */
+  var responses = {
+    '/profile': {
+      name: 'Shoukath Ali M',
+      role: 'Java Backend Developer',
+      company: 'InnoProSol Pvt Ltd',
+      experienceYears: 3,
+      focus: ['REST APIs', 'Spring Boot', 'SQL performance', 'Clean architecture'],
+      industries: ['Healthcare', 'Procurement', 'Utilities', 'Travel', 'Analytics', 'Field service']
+    },
+    '/stack': {
+      languages: ['Java', 'SQL', 'JavaScript'],
+      frameworks: ['Spring Boot', 'Spring MVC', 'Hibernate'],
+      architecture: ['REST APIs', 'Microservices', 'MVC'],
+      databases: ['MySQL', 'PostgreSQL', 'MS SQL'],
+      tools: ['Git', 'Docker', 'Kubernetes', 'Postman'],
+      caching: { redis: 'basic usage' }
+    },
+    '/projects': {
+      total: 9,
+      mostRecentWork: ['SST CRM', 'E-Meter', 'Kitchen Tandem', 'Manodayam'],
+      filterBy: ['Healthcare', 'Procurement', 'Utilities', 'Travel', 'Analytics', 'Field service'],
+      commits: 2057
+    },
+    '/contact': {
+      email: 'shoukatha746@gmail.com',
+      phone: '+91 91086 79008',
+      linkedin: 'linkedin.com/in/shoukath-ali-671309213',
+      github: 'github.com/Shoukath1006'
+    }
+  };
+  var tabs = document.getElementById('console-tabs');
+  var out = document.getElementById('console-out');
+  var current = '/profile';
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function highlight(json) {
+    return esc(json)
+      .replace(/"([^"]+)"(?=:)/g, '<span class="k">"$1"</span>')
+      .replace(/: "([^"]*)"/g, ': <span class="s">"$1"</span>')
+      .replace(/^(\s*)"([^"]*)"(,?)$/gm, '$1<span class="s">"$2"</span>$3')
+      .replace(/: (\d+)/g, ': <span class="n">$1</span>');
+  }
+  function show(path) {
+    current = path;
+    out.innerHTML = highlight(JSON.stringify(responses[path], null, 2));
+    out.scrollTop = 0;
+    tabs.querySelectorAll('.tab').forEach(function (t) {
+      t.setAttribute('aria-selected', t.dataset.path === path ? 'true' : 'false');
+    });
+  }
+  Object.keys(responses).forEach(function (path) {
+    var b = document.createElement('button');
+    b.className = 'tab'; b.type = 'button'; b.setAttribute('role', 'tab');
+    b.dataset.path = path; b.textContent = 'GET ' + path;
+    b.addEventListener('click', function () { show(path); });
+    tabs.appendChild(b);
+  });
+  show(current);
+  var copyJson = document.getElementById('copy-json');
+  copyJson.addEventListener('click', function () {
+    copyText(JSON.stringify(responses[current], null, 2), copyJson, 'Copied');
+  });
+
+  /* Language bars */
+  var langs = [['Java', 7265], ['JavaScript', 2054], ['Swift', 712], ['SQL', 588], ['PHP', 479]];
+  var bars = document.getElementById('bars');
+  langs.forEach(function (l) {
+    var li = document.createElement('li');
+    li.className = 'bar-row';
+    li.innerHTML = '<span>' + l[0] + '</span><span class="bar-track"><span class="bar" style="width:' +
+      (l[1] / langs[0][1] * 78).toFixed(1) + '%"></span><span class="bar-val">' + l[1].toLocaleString('en-US') + '</span></span>';
+    bars.appendChild(li);
+  });
+
+  /* Project filter */
+  var projects = Array.prototype.slice.call(document.querySelectorAll('.project'));
+  var filters = document.getElementById('filters');
+  var countEl = document.getElementById('project-count');
+  var nameEl = document.getElementById('filter-name');
+  var domains = ['All', 'Healthcare', 'Procurement', 'Utilities', 'Travel', 'Analytics', 'Field service'];
+  function apply(domain) {
+    var shown = 0;
+    projects.forEach(function (p) {
+      var match = domain === 'All' || p.dataset.domain === domain;
+      p.hidden = !match;
+      if (match) shown++;
+    });
+    filters.querySelectorAll('.chip').forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.domain === domain ? 'true' : 'false');
+    });
+    nameEl.textContent = domain.toLowerCase().replace(' ', '-');
+    countEl.textContent = 'Showing ' + shown + (shown === 1 ? ' project' : ' projects');
+  }
+  domains.forEach(function (d) {
+    var n = d === 'All' ? projects.length : projects.filter(function (p) { return p.dataset.domain === d; }).length;
+    var b = document.createElement('button');
+    b.className = 'chip'; b.type = 'button'; b.dataset.domain = d;
+    b.innerHTML = d + '<span>' + n + '</span>';
+    b.addEventListener('click', function () { apply(d); });
+    filters.appendChild(b);
+  });
+  apply('All');
+
+  /* Current section in nav */
+  var links = document.querySelectorAll('.nav a');
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) {
+          a.classList.toggle('on', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+    document.querySelectorAll('section[id]').forEach(function (s) { spy.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

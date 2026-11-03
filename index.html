@@ -13,9 +13,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shoukath1006.github.io/My_Profile/">
     <meta property="og:image" content="https://shoukath1006.github.io/My_Profile/assets/shoukath-ali.jpg">
-    <meta property="og:image:width" content="834">
-    <meta property="og:image:height" content="1250">
-    <meta property="og:image:alt" content="Portrait of Shoukath Ali M in front of a red brick wall">
+    <meta property="og:image:width" content="720">
+    <meta property="og:image:height" content="1079">
+    <meta property="og:image:alt" content="Portrait of Shoukath Ali M in a pale blue shirt">
     <meta name="twitter:card" content="summary">
     <link rel="icon" type="image/svg+xml"
           href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233346c8'/%3E%3Cpath d='M22 10.5c-1.4-1.6-3.4-2.5-6-2.5-3.6 0-6 1.8-6 4.4 0 5.6 12.4 2.9 12.4 7.9 0 2.300-2.500 3.700-6.200 3.700-2.800 0-5.100-1-6.700-2.800' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -43,6 +43,8 @@
             --code-str: #ffb596;
             --code-num: #8fe0d0;
             --code-line: #2c3463;
+            --portrait-a: #3346c8;
+            --portrait-b: #8796f2;
             --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
             --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
             --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -61,6 +63,8 @@
                 --tint: #1e2550;
                 --code-bg: #080b1e;
                 --code-line: #262c55;
+                --portrait-a: #333f9e;
+                --portrait-b: #6172db;
                 color-scheme: dark;
             }
         }
@@ -77,6 +81,8 @@
             --tint: #1e2550;
             --code-bg: #080b1e;
             --code-line: #262c55;
+            --portrait-a: #333f9e;
+            --portrait-b: #6172db;
             color-scheme: dark;
         }
 
@@ -359,13 +365,21 @@
             background: transparent;
         }
 
+        .portrait {
+            justify-self: end;
+            width: 100%;
+            max-width: 330px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(155deg, var(--portrait-a), var(--portrait-b));
+        }
+
         .portrait img {
             width: 100%;
             height: auto;
             aspect-ratio: 4 / 5;
             object-fit: cover;
             object-position: 50% 22%;
-            border-radius: 6px;
         }
 
         .stats {
@@ -966,7 +980,8 @@
             }
 
             .portrait {
-                max-width: 420px;
+                justify-self: start;
+                max-width: 260px;
             }
 
             .stats {
@@ -1107,9 +1122,9 @@
                 </div>
             </div>
             <figure class="portrait">
-                <img src="assets/shoukath-ali.jpg"
-                     alt="Portrait of Shoukath Ali M in a pale blue shirt, standing in front of a red brick wall"
-                     width="834" height="1250">
+                <img src="assets/shoukath-ali.webp"
+                     alt="Portrait of Shoukath Ali M in a pale blue shirt"
+                     width="720" height="1079">
             </figure>
             <dl class="stats">
                 <div>

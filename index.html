@@ -13,12 +13,11 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shoukath1006.github.io/My_Profile/">
     <meta property="og:image" content="https://shoukath1006.github.io/My_Profile/assets/shoukath-ali.jpg">
-    <meta property="og:image:width" content="720">
-    <meta property="og:image:height" content="1079">
-    <meta property="og:image:alt" content="Portrait of Shoukath Ali M in a pale blue shirt">
+    <meta property="og:image:width" content="834">
+    <meta property="og:image:height" content="1250">
+    <meta property="og:image:alt" content="Portrait of Shoukath Ali M in front of a red brick wall">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" type="image/svg+xml"
-          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233346c8'/%3E%3Cpath d='M22 10.5c-1.4-1.6-3.4-2.5-6-2.5-3.6 0-6 1.8-6 4.4 0 5.6 12.4 2.9 12.4 7.9 0 2.300-2.500 3.700-6.200 3.700-2.800 0-5.100-1-6.700-2.800' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -43,8 +42,7 @@
             --code-str: #ffb596;
             --code-num: #8fe0d0;
             --code-line: #2c3463;
-            --portrait-a: #3346c8;
-            --portrait-b: #8796f2;
+            --mark-dot: #ffb596;
             --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
             --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
             --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -63,8 +61,7 @@
                 --tint: #1e2550;
                 --code-bg: #080b1e;
                 --code-line: #262c55;
-                --portrait-a: #333f9e;
-                --portrait-b: #6172db;
+                --mark-dot: #b0401f;
                 color-scheme: dark;
             }
         }
@@ -81,8 +78,7 @@
             --tint: #1e2550;
             --code-bg: #080b1e;
             --code-line: #262c55;
-            --portrait-a: #333f9e;
-            --portrait-b: #6172db;
+            --mark-dot: #b0401f;
             color-scheme: dark;
         }
 
@@ -179,15 +175,20 @@
             white-space: nowrap;
         }
 
-        .mark {
-            display: grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            background: var(--accent);
+        .logo {
+            display: block;
+            flex: 0 0 auto;
             color: var(--on-accent);
-            font: 800 1.15rem/1 var(--display);
+        }
+
+        .brand .logo {
+            width: 38px;
+            height: 38px;
+        }
+
+        h1 .logo {
+            width: 0.86em;
+            height: 0.86em;
         }
 
         .nav {
@@ -311,7 +312,10 @@
         }
 
         h1 {
-            font: 800 calc((min(100vw, 1180px) - 112px) * 0.086)/1 var(--display);
+            display: flex;
+            align-items: center;
+            gap: 0.16em;
+            font: 800 calc((min(100vw, 1180px) - 112px) * 0.075)/1 var(--display);
             letter-spacing: -0.035em;
             margin-top: 22px;
             white-space: nowrap;
@@ -371,7 +375,6 @@
             max-width: 330px;
             border-radius: 16px;
             overflow: hidden;
-            background: linear-gradient(155deg, var(--portrait-a), var(--portrait-b));
         }
 
         .portrait img {
@@ -997,7 +1000,7 @@
             }
 
             h1 {
-                font-size: calc((100vw - 48px) * 0.148);
+                font-size: calc((100vw - 48px) * 0.128);
             }
 
             .nav {
@@ -1061,6 +1064,23 @@
         }
 
         @media (max-width: 520px) {
+            .brand {
+                gap: 8px;
+            }
+
+            .brand .logo {
+                width: 34px;
+                height: 34px;
+            }
+
+            .role-title {
+                display: block;
+            }
+
+            .role-sep {
+                display: none;
+            }
+
             .badge .since {
                 display: none;
             }
@@ -1091,10 +1111,25 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="sa-logo" viewBox="0 0 64 64">
+        <rect width="64" height="64" rx="15" style="fill: var(--accent)"></rect>
+        <path d="M26.500 21.500C25 16.500 21.500 14 17 14 12 14 8.500 17.200 8.500 22 8.500 33 27 29.500 27 41 27 46.500 23 50 17.500 50 12.500 50 9 47.500 7.500 43"
+              fill="none" stroke="currentColor" stroke-width="5.500" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M35 50 46 14 57 50" fill="none" stroke="currentColor" stroke-width="5.500" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+        <circle cx="46" cy="40" r="3.400" style="fill: var(--mark-dot)"></circle>
+    </symbol>
+</svg>
+
 <header class="top">
     <div class="wrap">
-        <a class="brand" href="#top" aria-label="Shoukath Ali M"><span class="mark" aria-hidden="true">S</span><span
-                class="brand-name">Shoukath Ali M</span></a>
+        <a class="brand" href="#top" aria-label="Shoukath Ali M">
+            <svg class="logo" aria-hidden="true">
+                <use href="#sa-logo"></use>
+            </svg>
+            <span class="brand-name">Shoukath Ali M</span>
+        </a>
         <nav class="nav" aria-label="Sections">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
@@ -1112,8 +1147,14 @@
             <div>
                 <p class="badge"><span class="dot" aria-hidden="true"></span>Software Engineer at InnoProSol <span
                         class="since">Since July 2023</span></p>
-                <h1>Shoukath <span class="last">Ali M</span></h1>
-                <p class="role">Full-Stack &amp; Mobile Developer · Java · React · Android · iOS</p>
+                <h1>
+                    <svg class="logo" aria-hidden="true">
+                        <use href="#sa-logo"></use>
+                    </svg>
+                    <span>Shoukath <span class="last">Ali M</span></span>
+                </h1>
+                <p class="role"><span class="role-title">Full-Stack &amp; Mobile Developer</span><span class="role-sep"> · </span>Java
+                    · React · Android · iOS</p>
                 <p class="thesis">I build backends, web apps and mobile apps, then take them all the way to
                     production.</p>
                 <div class="cta">
@@ -1122,9 +1163,9 @@
                 </div>
             </div>
             <figure class="portrait">
-                <img src="assets/shoukath-ali.webp"
-                     alt="Portrait of Shoukath Ali M in a pale blue shirt"
-                     width="720" height="1079">
+                <img src="assets/shoukath-ali.jpg"
+                     alt="Portrait of Shoukath Ali M in a pale blue shirt, standing in front of a red brick wall"
+                     width="834" height="1250">
             </figure>
             <dl class="stats">
                 <div>

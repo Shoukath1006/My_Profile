@@ -6,10 +6,10 @@
     <title>Shoukath Ali M</title>
     <meta name="claude:viewport-fit-sides" content="cover">
     <meta name="description"
-          content="Shoukath Ali M is a Java backend developer building Spring Boot services for healthcare, procurement, utilities and travel products.">
-    <meta property="og:title" content="Shoukath Ali M, Java Backend Developer">
+          content="Shoukath Ali M is a full-stack and mobile developer building Spring Boot services, React web apps and Android and iOS apps, with production releases and Docker and Kubernetes deployments.">
+    <meta property="og:title" content="Shoukath Ali M, Full-Stack and Mobile Developer">
     <meta property="og:description"
-          content="Spring Boot services behind billing runs, supplier catalogues and care schedules.">
+          content="Backends, web apps and mobile apps, taken all the way to production.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shoukath1006.github.io/My_Profile/">
     <meta property="og:image" content="https://shoukath1006.github.io/My_Profile/assets/shoukath-ali.jpg">
@@ -316,8 +316,9 @@
         }
 
         .role {
-            font: 500 clamp(1rem, 1.6vw, 1.15rem)/1.4 var(--mono);
+            font: 500 clamp(0.95rem, 1.3vw, 1.02rem)/1.4 var(--mono);
             margin-top: 24px;
+            text-wrap: balance;
         }
 
         .thesis {
@@ -541,6 +542,42 @@
 
         .n {
             color: var(--code-num);
+        }
+
+        .areas {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .area {
+            border-top: 2px solid var(--accent);
+            padding-top: 16px;
+        }
+
+        .area h3 {
+            font: 700 1.25rem/1.2 var(--display);
+        }
+
+        .area p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 960px) {
+            .areas {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .areas {
+                grid-template-columns: minmax(0, 1fr);
+                margin-top: 40px;
+            }
         }
 
         /* Experience */
@@ -1041,7 +1078,8 @@
 
 <header class="top">
     <div class="wrap">
-        <a class="brand" href="#top" aria-label="Shoukath Ali M"><span class="mark" aria-hidden="true">S</span><span class="brand-name">Shoukath Ali M</span></a>
+        <a class="brand" href="#top" aria-label="Shoukath Ali M"><span class="mark" aria-hidden="true">S</span><span
+                class="brand-name">Shoukath Ali M</span></a>
         <nav class="nav" aria-label="Sections">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
@@ -1057,10 +1095,12 @@
     <div class="hero">
         <div class="wrap">
             <div>
-                <p class="badge"><span class="dot" aria-hidden="true"></span>Software Engineer at InnoProSol <span class="since">Since July 2023</span></p>
+                <p class="badge"><span class="dot" aria-hidden="true"></span>Software Engineer at InnoProSol <span
+                        class="since">Since July 2023</span></p>
                 <h1>Shoukath <span class="last">Ali M</span></h1>
-                <p class="role">Java Backend Developer · Spring Boot · Microservices</p>
-                <p class="thesis">I build the services behind billing runs, supplier catalogues and care schedules.</p>
+                <p class="role">Full-Stack &amp; Mobile Developer · Java · React · Android · iOS</p>
+                <p class="thesis">I build backends, web apps and mobile apps, then take them all the way to
+                    production.</p>
                 <div class="cta">
                     <a class="btn solid" href="#projects">See my projects</a>
                     <a class="btn line" href="#contact">Get in touch</a>
@@ -1074,7 +1114,7 @@
             <dl class="stats">
                 <div>
                     <dt>3+</dt>
-                    <dd>years building production backends</dd>
+                    <dd>years building production software</dd>
                 </div>
                 <div>
                     <dt>12</dt>
@@ -1095,17 +1135,17 @@
     <section class="band alt" id="about">
         <div class="wrap">
             <p class="eyebrow">About</p>
-            <h2>Backend first, and comfortable across the whole product.</h2>
+            <h2>From the database to the app store.</h2>
             <div class="about">
                 <div class="prose">
-                    <p>I'm a software engineer with over three years of experience in Java backend development. Most of
-                        my days go into Spring Boot services: designing REST APIs, shaping the database underneath them
-                        and keeping them fast once real data arrives.</p>
+                    <p>I'm a full-stack and mobile developer with over three years of experience. I design Spring Boot
+                        services and REST APIs, build the web screens on top of them, and develop the Android and iOS
+                        apps people use every day.</p>
                     <p>The systems I work on tend to have rules that must come out right. A water bill, an insurance
                         split on a care invoice and a refund on a tour booking all need to be correct every time, so I
                         care about clean service layers and consistent data.</p>
-                    <p>When a feature needs it, I follow it past the API into the React screen or the Android and iOS
-                        app. That gives me a practical sense of what makes an API pleasant to use.</p>
+                    <p>I also see the work through to release. I prepare production builds and releases for Android and
+                        iOS, and deploy services with Docker and Kubernetes.</p>
                 </div>
                 <div class="console" aria-label="Interactive API console">
                     <div class="console-head"><span>profile-api</span><span>sample responses, no server</span></div>
@@ -1115,6 +1155,19 @@
                     </div>
                     <pre id="console-out" tabindex="0" aria-live="polite"></pre>
                 </div>
+            </div>
+            <div class="areas">
+                <div class="area"><h3>Backend</h3>
+                    <p>Java and Spring Boot services, REST APIs, microservices and SQL tuned for real data.</p></div>
+                <div class="area"><h3>Frontend</h3>
+                    <p>Web apps in React and JavaScript, including dashboards, Excel imports, search and audit logs.</p>
+                </div>
+                <div class="area"><h3>Mobile</h3>
+                    <p>Android and iOS apps with push notifications, deep links, GPS, barcode scanning and printing.</p>
+                </div>
+                <div class="area"><h3>Release and deployment</h3>
+                    <p>Production builds and releases on both platforms, and services deployed with Docker and
+                        Kubernetes.</p></div>
             </div>
         </div>
     </section>
@@ -1133,12 +1186,18 @@
                         <li>Improve performance by <strong>optimizing SQL queries</strong> and API response times.</li>
                         <li>Implement modular service layers that follow <strong>clean architecture</strong> principles.
                         </li>
-                        <li>Work with frontend and QA teams to deliver <strong>production-ready features</strong>.</li>
-                        <li>Handle deployments and keep systems <strong>stable in production</strong>.</li>
+                        <li>Build <strong>web interfaces</strong> in React and JavaScript on top of those APIs.</li>
+                        <li>Develop <strong>Android and iOS apps</strong>, and prepare production builds and releases
+                            for both platforms.
+                        </li>
+                        <li>Deploy services with <strong>Docker and Kubernetes</strong> and keep systems stable in
+                            production.
+                        </li>
+                        <li>Work with QA teams to deliver <strong>production-ready features</strong>.</li>
                     </ul>
                 </div>
                 <div class="chart">
-                    <h3>Java is where most of my work lands</h3>
+                    <h3>Java first, across web and mobile</h3>
                     <p>Files changed in my commits, by source language.</p>
                     <ul class="bars" id="bars"></ul>
                     <p class="source">Source: git log across my project repositories, Aug 2023 to Oct 2026. Java
@@ -1176,6 +1235,9 @@
                             <li>Added GPS tracking with last known location and nearest carer ETA, plus account deletion
                                 for the right to erasure.
                             </li>
+                            <li>Mobile release: added Play Store and App Store update notifications and Apple's tracking
+                                permission, and fixed a crash found during app review.
+                            </li>
                         </ul>
                         <ul class="tags">
                             <li>Java 21</li>
@@ -1201,7 +1263,10 @@
                             <li>Implemented refunds and credit notes, and synced bookings, receipts and credit notes to
                                 an external CRM.
                             </li>
-                            <li>Added universal search, in-app notifications and record-level audit logs.</li>
+                            <li>Added universal search, in-app notifications and record-level audit logs, with React
+                                screens on top of the APIs.
+                            </li>
+                            <li>Deployment: updated Kubernetes configuration for AWS staging and production.</li>
                             <li>Designed database-driven modules for efficient data handling and reporting.</li>
                         </ul>
                         <ul class="tags">
@@ -1228,6 +1293,9 @@
                             </li>
                             <li>Added multi-factor authentication and encryption for user and employee data.</li>
                             <li>Worked across the auth server, common service, web frontend and Android app.</li>
+                            <li>Deployment: worked on the Dockerfiles and Kubernetes deployment and configuration files
+                                for its services.
+                            </li>
                         </ul>
                         <ul class="tags">
                             <li>Java 21</li>
@@ -1235,6 +1303,8 @@
                             <li>Spring Security</li>
                             <li>MS SQL</li>
                             <li>Android</li>
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
                         </ul>
                     </div>
                 </article>
@@ -1283,6 +1353,9 @@
                                 and Excel export.
                             </li>
                             <li>Delivered shopping list, search and deep link features in the Android and iOS apps.</li>
+                            <li>Mobile release: added Android 16 KB page size support and an iOS prompt when a new build
+                                is available.
+                            </li>
                         </ul>
                         <ul class="tags">
                             <li>Spring Boot</li>
@@ -1467,10 +1540,10 @@
             <div class="path">
                 <span class="packet" aria-hidden="true"></span>
                 <div class="layer">
-                    <div><h3>Clients</h3>
+                    <div><h3>Web and mobile</h3>
                         <p>Where the request starts</p></div>
-                    <div class="items">React, React Native, JavaScript, Android (Java), iOS (Swift), PHP</div>
-                    <span class="level">When needed</span>
+                    <div class="items">React, JavaScript, Android (Java), iOS (Swift), React Native, PHP</div>
+                    <span class="level">Regular</span>
                 </div>
                 <div class="layer">
                     <div><h3>Security</h3>
@@ -1506,10 +1579,16 @@
                     <span class="level">Basic</span>
                 </div>
                 <div class="layer">
-                    <div><h3>Delivery</h3>
-                        <p>How it reaches production</p></div>
-                    <div class="items">Git daily, plus Docker and Kubernetes deployments</div>
-                    <span class="level">Basic</span>
+                    <div><h3>Deployment</h3>
+                        <p>How services reach production</p></div>
+                    <div class="items">Docker, Kubernetes on AWS, staging and production configuration, Git</div>
+                    <span class="level">Regular</span>
+                </div>
+                <div class="layer">
+                    <div><h3>Mobile release</h3>
+                        <p>How apps reach people's phones</p></div>
+                    <div class="items">Android and iOS production builds, Play Store and App Store releases</div>
+                    <span class="level">Regular</span>
                 </div>
             </div>
         </div>
@@ -1530,8 +1609,8 @@
                     <p>Clean, modular service layers make code easier to review, test and change, especially for whoever
                         maintains it next.</p></div>
                 <div><h3>Stay with it in production</h3>
-                    <p>A feature is finished when it runs reliably. I handle deployments and database changes and work
-                        closely with QA and frontend teams.</p></div>
+                    <p>A feature is finished when it runs reliably for users. I handle builds, releases, deployments and
+                        database changes, and work closely with QA.</p></div>
             </div>
         </div>
     </section>
@@ -1539,9 +1618,9 @@
     <section class="contact" id="contact">
         <div class="wrap">
             <p class="eyebrow">Contact</p>
-            <h2>Have a backend that needs building?</h2>
-            <p class="lede">Email is the best way to reach me. I'm happy to talk through a role, a project or a system
-                you're trying to scale.</p>
+            <h2>Have a product that needs building?</h2>
+            <p class="lede">Email is the best way to reach me. I'm happy to talk through a role, a project or an app
+                you're trying to ship.</p>
             <div class="channels">
                 <div class="channel">
                     <span class="channel-label">Email</span>
@@ -1574,7 +1653,7 @@
 <footer>
     <div class="wrap">
         <span>Shoukath Ali M</span>
-        <span>Java Backend Developer</span>
+        <span>Full-Stack and Mobile Developer</span>
     </div>
 </footer>
 
@@ -1649,18 +1728,21 @@
         var responses = {
             '/profile': {
                 name: 'Shoukath Ali M',
-                role: 'Java Backend Developer',
+                role: 'Full-Stack and Mobile Developer',
                 company: 'InnoProSol Pvt Ltd',
                 experienceYears: 3,
-                focus: ['REST APIs', 'Spring Boot', 'SQL performance', 'Clean architecture'],
+                focus: ['Backend', 'Frontend', 'Mobile', 'Release and deployment'],
                 industries: ['Healthcare', 'Procurement', 'Utilities', 'Analytics', 'Operations', 'Travel', 'Inventory']
             },
             '/stack': {
-                languages: ['Java', 'SQL', 'JavaScript'],
-                frameworks: ['Spring Boot', 'Spring MVC', 'Hibernate'],
+                languages: ['Java', 'SQL', 'JavaScript', 'Swift'],
+                backend: ['Spring Boot', 'Spring MVC', 'Hibernate'],
+                frontend: ['React', 'JavaScript'],
+                mobile: ['Android', 'iOS', 'React Native'],
                 architecture: ['REST APIs', 'Microservices', 'MVC'],
                 databases: ['MySQL', 'PostgreSQL', 'MS SQL'],
-                tools: ['Git', 'Docker', 'Kubernetes', 'Postman'],
+                deployment: ['Docker', 'Kubernetes'],
+                tools: ['Git', 'Postman'],
                 caching: {redis: 'basic usage'}
             },
             '/projects': {
@@ -1770,7 +1852,13 @@
         var header = document.querySelector('.top');
         var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
         /* The Approach section follows Skills and has no link of its own */
-        var navFor = {about: 'about', experience: 'experience', projects: 'projects', stack: 'stack', principles: 'stack'};
+        var navFor = {
+            about: 'about',
+            experience: 'experience',
+            projects: 'projects',
+            stack: 'stack',
+            principles: 'stack'
+        };
 
         function measure() {
             root.style.setProperty('--head', header.offsetHeight + 'px');

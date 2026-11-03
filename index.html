@@ -42,7 +42,6 @@
             --code-str: #ffb596;
             --code-num: #8fe0d0;
             --code-line: #2c3463;
-            --mark-dot: #ffb596;
             --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
             --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
             --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -61,7 +60,6 @@
                 --tint: #1e2550;
                 --code-bg: #080b1e;
                 --code-line: #262c55;
-                --mark-dot: #b0401f;
                 color-scheme: dark;
             }
         }
@@ -78,7 +76,6 @@
             --tint: #1e2550;
             --code-bg: #080b1e;
             --code-line: #262c55;
-            --mark-dot: #b0401f;
             color-scheme: dark;
         }
 
@@ -1113,12 +1110,12 @@
 
 <svg width="0" height="0" style="position: absolute" aria-hidden="true">
     <symbol id="sa-logo" viewBox="0 0 64 64">
-        <rect width="64" height="64" rx="15" style="fill: var(--accent)"></rect>
-        <path d="M26.500 21.500C25 16.500 21.500 14 17 14 12 14 8.500 17.200 8.500 22 8.500 33 27 29.500 27 41 27 46.500 23 50 17.500 50 12.500 50 9 47.500 7.500 43"
-              fill="none" stroke="currentColor" stroke-width="5.500" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M35 50 46 14 57 50" fill="none" stroke="currentColor" stroke-width="5.500" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-        <circle cx="46" cy="40" r="3.400" style="fill: var(--mark-dot)"></circle>
+        <polygon points="32,6 54,19 54,45 32,58 10,45 10,19" style="fill: var(--accent); stroke: var(--accent)"
+                 stroke-width="7" stroke-linejoin="round"></polygon>
+        <path d="M42 21H26a5 5 0 0 0-5 5v1a5 5 0 0 0 5 5h12a5 5 0 0 1 5 5v1a5 5 0 0 1-5 5H22" fill="none"
+              stroke="currentColor" stroke-width="4.500" stroke-linecap="round"></path>
+        <circle cx="43" cy="21" r="4.200" style="fill: var(--brick)" stroke="currentColor" stroke-width="1.500"></circle>
+        <circle cx="21" cy="43" r="4.200" fill="currentColor"></circle>
     </symbol>
 </svg>
 
